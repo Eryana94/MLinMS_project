@@ -11,18 +11,20 @@ import os
 from glob import glob
 import sys
 import math
+import numpy as np
 import time
 
 try:
 	# Read command line imput parameters for ms-type and ion-mode
 	ms_type = str(sys.argv[1])
 	ion_mode = str(sys.argv[2])
+	col_eng = 50 # default value for testing purposes
 	#col_eng = int(sys.argv[3])
-	col_eng = 50
 
 
 	#owd = os.getcwd()
-	os.system('rm -r ./stripped_data')
+	print("Removing existing directory ./stripped_data, this may take a while.")
+	os.system('rm -f -r ./stripped_data')
 	os.system('mkdir stripped_data')
 	out_path = './stripped_data'
 
@@ -49,7 +51,7 @@ try:
 							break
 						else:
 							peaks.append(float(line[0]))
-							intens.append(float(line[2])/100)
+							intens.append(float(line[1]))
 
 					elif (line[0]=='CH$FORMULA:'):
 						formula = line[1]
@@ -76,9 +78,10 @@ try:
 					o.write('#Formula: %s\n' % (formula))
 					o.write('#Mass: %.4f\n' % (float(mass)))
 					o.write('#SMILES: %s\n' % (smiles))
-					o.write('#Peaks\tm/z\trelative_intensity\n')
+					o.write('#Peaks\tm/z\tintensity\trelative_intens\n')
+					s = np.sum(intens)
 					for a in peaks:
-						o.write('%.2f\t%.2f\n' % (a, intens[ii]))
+						o.write('%.4f\t%.4f\t%.4f\n' % (a, intens[ii], intens[ii]/s))
 						ii = ii + 1
 					o.close()
 					i = i+1
@@ -87,7 +90,7 @@ try:
 	print('\n')
 	print('**********************FINISHED**********************')
 	print("Filtered a total of %d files.\nWrote %d files in directory %s." % (nf, i-1, out_path))
-	print("Filtering took %.4f s cpu time\nAverage cpu time per file: %.4f s" % (t1, (t1)/nf))
+	print("Filtering took %.4f s cpu time\nAverage cpu time per file: %.8f s" % (t1, (t1)/nf))
 				
 except(IndexError):
 	print("!!!!AN ERROR OCCURRED!!!!")
@@ -95,13 +98,18 @@ except(IndexError):
 	print("Usage: ./stripsearch.py [MS-TYPE] [ION-MODE]")
 	print("Example: ./stripsearch.py MS2 POSITIVE")
 	print("Exiting program, please try again!")
+
+except(ZeroDivisionError):
+	print("!!!!AN ERROR OCCURRED!!!!")
+	print('Could not find any files matching search criteria.')
+	print('Please make sure you are running the script in the correct directory MassBank-data-master')
+	print("Exiting program, please try again!")
 	
 
 		
 		
 	
 	
-
 
 
 
