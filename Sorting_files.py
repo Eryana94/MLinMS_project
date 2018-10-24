@@ -7,7 +7,7 @@ from shutil import copy
 
 path = "/scratch/work/ibragir1/ML_project/MassBank-data/stripped_data/"
 final_path = "/scratch/work/ibragir1/ML_project/dir/"
-list_dir = os.listdir(path)
+list_dir = os.listdir('.')
 pattern = "*.txt"
 for entry in os.listdir(path):
     if fnmatch.fnmatch(entry, pattern):
