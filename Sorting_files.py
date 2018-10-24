@@ -6,6 +6,7 @@ from shutil import copy
 
 
 path = "/scratch/work/ibragir1/ML_project/MassBank-data/stripped_data/"
+final_path = "/scratch/work/ibragir1/ML_project/dir/"
 list_dir = os.listdir(path)
 pattern = "*.txt"
 for entry in os.listdir(path):
@@ -26,6 +27,6 @@ for entry in os.listdir(path):
         if has_element:
             print ("Contain_heavy_elements")
         else:
-            copy(entry,'/scratch/work/ibragir1/ML_project/dir/')
+            copy(entry,final_path)
             print ("Only OCH")
         print (formula)
