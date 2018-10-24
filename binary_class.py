@@ -47,17 +47,17 @@ print("Size of test data set is %d" % (len(test)))
 w = np.random.rand(5000,1) # generates random numbers [0,1]
 # add truncating one to w
 w = np.append(w, 1)
-
+    
 # Train model
 for dt in trg:
 	dt_path = dd + dt
 	mz = np.loadtxt(dt_path, comments='#', usecols=[0])
 	mz= np.rint(mz) # rounds the mz to integers.
 	ri = np.loadtxt(dt_path, comments='#', usecols=[2])
-	data = np.concatenate((mz, ri), axis=1)
+	data = np.column_stack((mz, ri))
 	mzf= np.arange(0,4999,1)# create m/z vector of same lenght as w-1 
 	f=np.zeros(5000)
-	f= np.concatenate((mzf, f), axis=1)
+	f= np.column_stack((mzf, f))
 	for i in data:
 		for a in f:
 			if i[0]==a[0]:
