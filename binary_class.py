@@ -64,24 +64,28 @@ for dt in trg:
                                 a[1]=a[1]+i[1]
 	
 	print(f)
-	#x = mz * ri # feature vector
+	
+	x = f[:,0]*f[:,1]
+	# x = mz * ri # feature vector
 	# add truncating zero to feature vector
-	#y = np.pad(x, (0, 1), 'constant')
+	y = np.pad(x, (0, 1), 'constant')
 	# Calculate dot product y * w
-	#yw = np.dot=(y, w)
+	yw = np.dot=(y, w)
 
-	# Generate c > (W*Y)/(Y*Y)
+	# Generate c > C=(W*Y)/(Y*Y)
 	
-	
+	C = np.dot(w,y)/np.dot(y,y)
+	c = C + 0.01
 	
 	# test which side of hyperplane y * w<0 for cat 1 or y * w>0 for cat 2, compare to correct classification
 	# Correct weights w if classification is incorrect
 	# w' = w + c*y if y should have been cat 1
 	# w' = w - c*y if y should have been cat 2
-	#if (yw >0):
-		
-	#else:
-
+	if (yw >0):
+	    w=w+c*y	
+	else:
+            w=w-c*y
+	
 	# Calculate change in vector: e = w' - w
 	# Claculate |e|
 
