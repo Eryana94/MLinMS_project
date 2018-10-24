@@ -21,7 +21,7 @@ random.seed(42)
 
 print("Splitting data into training and test data sets.")
 
-frac = 0.7 # Fraction of training data set of whole data
+frac = 0.8 # Fraction of training data set of whole data
 i = 0
 trg = []
 test = []
