@@ -18,7 +18,7 @@ for entry in os.listdir(path):
             words = first.split()
             formula = words[1]
         print (entry)
-        elements = ["N", "S", "Cl", "P", "F", "Ca", "Mg", "Ca", "K"]
+        elements = ["N", "S", "Cl", "P", "F", "Na", "Mg", "Ca", "K", "Al", "Mn", "Be", "Li", "Zn"]
         has_element=False
         for element in elements:
             has_element = has_element or element in formula
