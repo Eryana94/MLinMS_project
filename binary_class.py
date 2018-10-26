@@ -51,6 +51,18 @@ w = np.append(w, 1)
 # Train model
 for dt in trg:
         dt_path = dd + dt
+	
+	o = open(dt_path, 'r')
+	for line in o:
+		if line.startswith('#SMILES'):
+			line=line.strip()
+			line=line.split()
+			if 'c' in line[1]:
+				class = 1
+			else:
+				class = 0
+	o.close()
+	
         mz = np.loadtxt(dt_path, comments='#', usecols=[0])
         mz= np.rint(mz) # rounds the mz to integers.
         ri = np.loadtxt(dt_path, comments='#', usecols=[2])
@@ -77,14 +89,15 @@ for dt in trg:
 	C = np.dot(w,y)/np.dot(y,y)
 	c = C + 0.01
 	
-	# test which side of hyperplane y * w<0 for cat 1 or y * w>0 for cat 2, compare to correct classification
+	# test which side of hyperplane y * w<0 for cat 1 or y * w>0 for cat 0, compare to correct classification
 	# Correct weights w if classification is incorrect
 	# w' = w + c*y if y should have been cat 1
-	# w' = w - c*y if y should have been cat 2
-	if (yw >0):
-	    w=w+c*y	
-	else:
-            w=w-c*y
+	# w' = w - c*y if y should have been cat 0
+	w0 = w
+	if (yw > 0 and class != 0 ):
+		w = w - c*y
+	elif (yw < 0 and class != 1):
+		w = w + c*y
 	
 	# Calculate change in vector: e = w' - w
 	# Claculate |e|
