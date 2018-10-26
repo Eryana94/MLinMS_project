@@ -54,10 +54,10 @@ for dt in trg:
         mz = np.loadtxt(dt_path, comments='#', usecols=[0])
         mz= np.rint(mz) # rounds the mz to integers.
         ri = np.loadtxt(dt_path, comments='#', usecols=[2])
-        data = np.columns_stack((mz, ri))
+        data = np.column_stack((mz, ri))
         mzf= np.arange(0,5000,1)# create m/z vector of same lenght as w-1 
         f=np.zeros(5000)
-        f= np.columns_stack((mzf, f))
+        f= np.column_stack((mzf, f))
         for i in data:
                 for a in f:
                         if i[0]==a[0]:
