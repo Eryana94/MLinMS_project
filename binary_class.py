@@ -100,7 +100,10 @@ for dt in trg:
 		w = w + c*y
 	
 	# Calculate change in vector: e = w' - w
+	e = w - w0
 	# Claculate |e|
+	enorm = np.linalg.norm(e, 2)
+	print(e)
 
 	
 
