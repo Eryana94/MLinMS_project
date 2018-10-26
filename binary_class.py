@@ -105,5 +105,6 @@ for dt in trg:
 	enorm = np.linalg.norm(e, 2)
 	print(e)
 
+print(w)
 	
 
