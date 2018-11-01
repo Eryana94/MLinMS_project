@@ -6,4 +6,4 @@ stripsearch.py:
 
 PLEASE USE 'stripsearch_v2.py'!!!!!
 
-binary_classifier_v2.py: Binary classifier. Currently works for carbonyl oxygen classification. please run in 'Mass-Bank-data-master' directory after 'stripsearch_v2.py' as '.binary_classifier_v2.py'. Prints error and final values of w to files. 
+binary_classifier_v2.py: Binary classifier. Currently works for carbonyl oxygen classification. please run in 'Mass-Bank-data-master' directory after 'stripsearch_v2.py' as './binary_classifier_v2.py'. Prints error and final values of w to files. 
