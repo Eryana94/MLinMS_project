@@ -43,6 +43,15 @@ python3 ./stripsearch_v3.py MS2 POSITIVE
 # Some files causing errors
 Just discard them :D
 
+I found:
+
+CO000210.txt  CO000300.txt  CO000350.txt  CO000420.txt  CO000500.txt  CO000510.txt in folder Univ_Connecticut
+
+and
+
+ET201104.txt in Eawag_Additional_Specs
+
+
 # Added stuff in v3 vs. v2
 
 # Modules
