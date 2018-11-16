@@ -15,7 +15,7 @@ RDKit can be installed via conda (see https://www.rdkit.org/docs/Install.html)
 
 Creating a special environment in Triton (see http://scicomp.aalto.fi/triton/apps/python.html)
 
-Putting these together one needs to run these on Triton (# are just explanations)
+Putting these together one needs to run these on Triton (bolded headlines are just explanations)
 
 # Move your package cache to your work directory.  The following does it automatically.
 rsync -lrt ~/.conda/ $WRKDIR/conda/ && rm -r ~/.conda
