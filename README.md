@@ -19,12 +19,16 @@ Putting these together one needs to run these on Triton (bolded headlines are ju
 
 # Move your package cache to your work directory.  The following does it automatically.
 rsync -lrt ~/.conda/ $WRKDIR/conda/ && rm -r ~/.conda
+
 ln -sT $WRKDIR/conda ~/.conda
+
 quotafix -gs --fix $WRKDIR/conda
 
 # create environment with RDKit package in it
 module load teflon
+
 conda create -c rdkit -n my-rdkit-env rdkit
+
 module unload teflon
 
 # activate your RDkit environment (your shell is after this in this environment)
@@ -43,10 +47,15 @@ Just discard them :D
 
 # Modules
 from rdkit import Chem
+
 from rdkit import DataStructs
+
 from rdkit.DataStructs.cDataStructs import BitVectToText
+
 from rdkit.Chem.Fingerprints import FingerprintMols
+
 from rdkit.Chem.Fingerprints.FingerprintMols import FingerprintsFromMols
+
 from rdkit.Chem.Fingerprints.FingerprintMols import GetRDKFingerprint
 
 # "Code"
@@ -57,6 +66,7 @@ just after writing $SMILES
 # See these links
 
 https://www.rdkit.org/docs/source/rdkit.Chem.Fingerprints.FingerprintMols.html
+
 https://www.rdkit.org/docs/source/rdkit.Chem.rdFingerprintGenerator.html
 
 I have used the RDK fingerprint with default settings
