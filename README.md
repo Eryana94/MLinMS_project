@@ -34,7 +34,7 @@ module unload teflon
 # activate your RDkit environment (your shell is after this in this environment)
 source activate my-rdkit-env
 
-# to exit from environment use (if you need to go back just reactivate ie use the abovo command)
+# to exit from environment use (if you need to go back just reactivate ie use the above command)
 source deactivate my-rdkit-env
 
 # To run stripsearch_v3.py
@@ -70,6 +70,8 @@ https://www.rdkit.org/docs/source/rdkit.Chem.Fingerprints.FingerprintMols.html
 https://www.rdkit.org/docs/source/rdkit.Chem.rdFingerprintGenerator.html
 
 I have used the RDK fingerprint with default settings
+
+
 
 
 
