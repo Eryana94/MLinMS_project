@@ -82,6 +82,9 @@ I have used the RDK fingerprint with default settings
 
 
 
+# stripsearch_v4.py added
+
+Can be run as the previous. Fingerprinting switched to Morgan, with adjustable bit amount (now set to 1024).
 
 
 
