@@ -8,6 +8,13 @@ PLEASE USE 'stripsearch_v2.py'!!!!!
 
 binary_classifier_v2.py: Binary classifier. Currently works for carbonyl oxygen classification. please run in 'Mass-Bank-data-master' directory after 'stripsearch_v2.py' as './binary_classifier_v2.py'. Prints error and final values of w to files. 
 
+####### Updated binary classifier regime in binary_classifier_v2.py
+
+Now with separate functions for training and testing the model and computing tanimotocoefficient
+
+Lenght of examined fingerprint region can be changed by modifying value of 'fl' in main(). For example, if fl = 50, the code trains binary classifiers to determine the first 50 bits of the fingerprint.
+
+THE CODE IS NOT PARALLEZED SO DO NOT RUN FOR THE WHOLE FINGERPRINT (1024 BITS)
 
 ####### For fingerprinting (RDK default fingerprint)
 
