@@ -14,7 +14,7 @@ Now with separate functions for training and testing the model and computing tan
 
 Lenght of examined fingerprint region can be changed by modifying value of 'fl' in main(). For example, if fl = 50, the code trains binary classifiers to determine the first 50 bits of the fingerprint.
 
-THE CODE IS NOT PARALLEZED SO DO NOT RUN FOR THE WHOLE FINGERPRINT (1024 BITS)
+THE CODE IS NOT PARALLELIZED SO DO NOT RUN FOR THE WHOLE FINGERPRINT (1024 BITS)
 
 ####### For fingerprinting (RDK default fingerprint)
 
