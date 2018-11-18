@@ -114,7 +114,14 @@ def tanimoto(a,b):
 		
 def test_model(test, dd, fl):
 	pit = 1000
+	fi = 0
+	os.system('rm -r ./pred_fps')
+	os.system('mkdir pred_fps')
+	
+	o2 = open('./pred_fps/tanimoto.dat', 'w')
+	
 	for dt in test:
+		ofp = './pred_fps/fp'+str(fi)+'.dat'
 		fp_pred = [] # predicted fingerprint
 		dt_path = dd + dt
 		o = open(dt_path, 'r')
@@ -124,7 +131,7 @@ def test_model(test, dd, fl):
 				line=line.strip()
 				line=line.split()
 				fprint = line[1]
-
+		o.close()
 		# create feature vector
 
 		mz = np.loadtxt(dt_path, comments='#', usecols=[0])
@@ -161,6 +168,27 @@ def test_model(test, dd, fl):
 			i = i+1
 		tanimoto_coeff = tanimoto(fp_pred, fprint)
 		print('Similarity of predicted fingerprints for %s is %.4f' %(dt, float(tanimoto_coeff)))
+		o2.write('%.4f\n' % (float(tanimoto_coeff)))
+		# print results to file
+		o = open(ofp, 'w')
+		ii = 0
+		o.write('#Correct fp: ')
+		while (ii<len(fp_pred)):
+			o.write('%d' % (int(fprint[ii])))
+			ii = ii+1	
+		o.write('\n')
+		ii = 0
+		o.write('#Predicted fp: ')
+		while (ii<len(fp_pred)):
+			o.write('%d' % (int(fp_pred[ii])))
+			ii = ii+1	
+		o.write('\n')
+		o.write('Tanimoto coefficient: %.4f\n' % (float(tanimoto_coeff)))
+		o.close()
+		fi = fi + 1
+	o2.close()
+
+
 
 def main ():
 	wd = os.getcwd()
@@ -198,7 +226,7 @@ def main ():
 	print("Size of training data set is %d" % (len(trg)))
 	print("Size of test data set is %d" % (len(test)))
 
-	fl = 50 # length of finger print
+	fl = 3 # length of finger print
 	train_model(trg, dd, fl)
 	test_model(test, dd, fl)
 
